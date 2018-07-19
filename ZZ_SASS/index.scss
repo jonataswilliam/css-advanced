@@ -1,0 +1,100 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+$color-primary: yellow;
+$color-secundary: red;
+$color-tertiary: blue;
+$color-text-dark: #111;
+$color-text-light: #ddd;
+$width-button: 150px;
+
+// Criando mixin
+@mixin clearfix {
+  // Correção ao aplicarmos float nos elementos
+  &::after {
+    content:"";
+    clear: both;
+    display: table;
+  }
+}
+
+@mixin style-link-text($color) {
+  text-decoration: none;
+  color: $color;
+  text-transform: uppercase;
+}
+
+
+// Criando funções
+@function divide($a, $b) {
+  @return $a / $b;
+}
+
+nav {
+  // margin: 30px;
+  // Invocando funcao. Como forma de solucionar a questao da unidade de medida, multiplicamos por 1px.
+  margin: divide(60, 2) *  1px; // 30px
+  background-color: $color-primary;    
+  
+  // Invocando m ixin
+  @include clearfix;
+}
+
+
+
+.navigation {
+  list-style: none;
+  float: left;
+  
+  li {    
+    display: inline-block;    
+    margin-left: 30px;
+    
+    &:first-child {
+      margin: 0;
+    }
+    
+    a {
+      @include style-link-text($color-text-dark);      
+    }
+  }  
+}
+
+.buttons {
+  float: right;
+}
+
+// Criando extend
+%btn-placeholder {
+  @include style-link-text($color-text-light);
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 100px;
+  width: $width-button;
+}
+
+.btn-main {
+  // Utilizando extend
+  @extend %btn-placeholder;
+  &:link {
+    background-color: $color-secundary;    
+  }
+  
+  &:hover {
+    background-color: darken($color-secundary, 15%);
+  }
+}
+
+.btn-hot {
+  @extend %btn-placeholder;
+  &:link {
+    background-color: $color-tertiary;    
+  }
+  
+  &:hover {
+    background-color: lighten($color-tertiary, 15%)
+  }
+}
