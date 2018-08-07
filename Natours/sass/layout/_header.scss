@@ -1,0 +1,39 @@
+
+
+.header {
+    /*xVH é x do valor total da Viewport */
+    height: 95vh;
+    /*Para criar o efeito de gradiente sobre uma imagem basta colocar um linear-gradient e a img separadas por ",". A img que ficará por cima sempre virá primeiro*/
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+        url("../img/hero.jpg");
+        
+    /*background-size= cover faz com que a imagem se adapte ao tamanho da janela*/
+    background-size: cover;
+    background-position: top;
+    
+    clip-path: polygon(0 0 ,100% 0, 100% 75vh, 0 100%);
+    position: relative;
+    
+    &__logo--box {
+    top: 4.5rem;
+    left: 4.5rem;
+    /*Position Absolute pega a posição de referencia do primeiro pai com Position Relative*/
+    position: absolute;
+    }
+    
+    &__logo {        
+        height: 3rem;        
+    }
+    
+    
+    &__text--box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}

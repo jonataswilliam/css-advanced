@@ -1,0 +1,83 @@
+/*Fonts sempre são definidas no body por boas práticas*/
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: $default-font-size;
+    line-height: 1.7;
+    color: $color-gray-dark;
+    padding: 3rem;    
+}
+
+
+
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+    /*Serve para consertar bug de tremor na animaçao. O real sentido dessa propriedade é esconder a parte de tras do elemento, que pode ser util quando rotacionamos para ver.*/
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+    
+    &--main {
+        display: block;
+        font-size: 6rem;    
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        
+        /*Invocando a animacao*/
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        
+        /*Define o estilo da animação. Por exemplo, se começara mais rapido e terminará lento, etc.*/
+        animation-timing-function: ease-out;
+        
+        /*
+        --Quantas vezes a animação será reproduzida
+        animation-iteration-count: 3;
+        --Quanto tempo para iniciar a animação
+        animation-delay: 3s;
+        */
+    }
+    
+    &--sub {
+        display: block;
+        font-weight: 700;
+        font-size: 2rem;
+        letter-spacing: 1.75rem;
+        
+        /*Invocando animação de forma resumida*/
+        animation: moveInRight 1s ease-out;
+    }
+}
+
+.heading-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark );
+
+    // Fazendo com que o texto fique gradiente
+    -webkit-background-clip: text;    
+    color: transparent;
+
+    transition: all .2s;
+
+    &:hover {
+        transform: skewY(2deg) skewX(15deg) scale(1.1);
+        text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+    }
+}
+
+.heading-tertiary {
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paragraph {
+    font-size: $default-font-size;
+
+    &:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+}

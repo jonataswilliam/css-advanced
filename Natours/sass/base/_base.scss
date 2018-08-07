@@ -1,0 +1,20 @@
+/*Resetando padroes dos browsers*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    
+}
+
+/*Definindo o tamanho da fonte de acordo com a fonte padrao do browser, que é 16px. Ao coloocarmos 62.5% definimos que queremos nosso fonte como 10px.*/
+html {
+    // Definindo quanto 1rem vale.
+    font-size: 62.5%;
+}
+
+/*Fonts sempre são definidas no body por boas práticas*/
+body {    
+    box-sizing: border-box;
+}
